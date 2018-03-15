@@ -141,19 +141,12 @@ def convnet_layers(inputs, widths, mode):
 
         ## ADD DROPOUT
 
-        # WHAT IS THIS!??! I think I know
-        #input('convnet_layers1')
-        input('squee')
-        #features = 0
-        print(pool8)
-        input('pool8')
         #features = tf.squeeze(pool8, [2], name='features') # squeeze row dim
         flat = tf.reshape(pool8, (-1, 28*256))
         flat = tf.nn.dropout(flat, keep_prob=0.5)
         logits = tf.layers.dense(flat, 10)
         features = logits
-        #print(features)
-        input('features')
+
         #tf.Print(features)
         #tf.summary.scalar('features',features)
         #input('convnet_layers2')
