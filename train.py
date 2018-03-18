@@ -67,17 +67,6 @@ def _get_input():
         width_threshold=FLAGS.width_threshold,
         length_threshold=FLAGS.length_threshold )
 
-    #print(FLAGS.train_path)
-    #print(FLAGS.filename_pattern)
-    #print(FLAGS.width_threshold)
-    #input('stop')
-    #tf.summary.text('width',width)
-    #tf.summary.text('label',label)
-    #tf.summary.scalar('train_path',FLAGS.train_path)
-    #tf.summary.image('images',image) # Uncomment to see images in TensorBoard
-    #print(label)
-    #input('gg')
-    #summary_op1 = tf.summary.text('tag1', tf.convert_to_tensor('Tag1: Random Text 1'))
 
     #tf.summary.text('label',label)
     return image,width,label
