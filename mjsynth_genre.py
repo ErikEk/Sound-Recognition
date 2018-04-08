@@ -31,10 +31,7 @@ def bucketed_input_pipeline(base_dir,file_patterns,
     queue_capacity = num_threads*batch_size*2
     # Allow a smaller final batch if we are going for a fixed number of epochs
     final_batch = (num_epochs!=None) 
-    #print(base_dir)
-    #print(file_patterns)
-    #print()
-    #input('s')
+
     data_queue = _get_data_queue(base_dir, file_patterns, 
                                  capacity=queue_capacity,
                                  num_epochs=num_epochs)
@@ -44,10 +41,7 @@ def bucketed_input_pipeline(base_dir,file_patterns,
         image, width, label, length, text, filename  = _read_word_record(
             data_queue)
 
-        #print(filename)
-        #input('ss')
-        #plt.imshow(image)
-        #plt.show()
+
         image = _preprocess_image(image) # move after batch?
         #tf.summary.image('images',image) # Uncomment to see images in TensorBoard
 
@@ -56,7 +50,7 @@ def bucketed_input_pipeline(base_dir,file_patterns,
         data_tuple = [image, label, length, text, filename]
 
         print(label)
-        #input('first')
+
         #tf.summary.text('label',label.value)
         '''
         width,data_tuple = tf.contrib.training.bucket(tensors=data_tuple,
@@ -84,16 +78,7 @@ def bucketed_input_pipeline(base_dir,file_patterns,
             dynamic_pad=True)
         
         [image, label, length, text, filename] = data_tuple
-        #print(width)
-        #input('nn')
-        #print(image)
-        #print(label)
-        #print(length)
-        
-        #input('nnn')
-        #print(text)
-        #print(filename)
-        #input('kk')
+
         label = tf.deserialize_many_sparse(label, tf.int64) # post-batching...
         
         #input('sec')
