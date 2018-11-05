@@ -142,10 +142,9 @@ def log_scale_melspectrogram(sess,path, plot=False):
     #D = np.abs(librosa.stft(signal))**2
     # Get duration
     DURA = get_duration(path,bitdepth,Fs,channels)
-
-    #print(DURA)
-
     #input('duration')
+    #print(DURA)
+    
     n_sample_fit = int(DURA*Fs)
 
     #input('testtt')
@@ -161,7 +160,7 @@ def log_scale_melspectrogram(sess,path, plot=False):
     #print(len(signal))
     #print(Fs)
     melspect = lb.logamplitude(lb.feature.melspectrogram(y=signal, sr=Fs,n_mels=N_MELS)**2, ref_power=1.0)
-    # INTE SÄKER HÄR
+    # Might need to change
     melspect = melspect[np.newaxis, :]
     if plot:
 
@@ -169,7 +168,6 @@ def log_scale_melspectrogram(sess,path, plot=False):
         #plt.imshow(melspect)
         plt.imshow(melspect.reshape((melspect.shape[1],melspect.shape[2])))
         plt.show()
-    #input('size')
 
     # Close file
     soundfile_obj.close()
@@ -220,12 +218,9 @@ def gen_shard(sess, input_base_dir, image_filenames, output_filename):
         #print(type(image_data))
 
         text,labels = get_text_and_labels(filename)
-        #input('1')
         if is_writable(width,text):
-            #input('2')
             example = make_example(filename, image_data, labels, text, 
                                    height, width)
-            #input('3')
             writer.write(example.SerializeToString())
         else:
             print('SKIPPING',filename)
@@ -268,10 +263,8 @@ def get_text_and_labels(filename):
     # 2697/6/466_MONIKER_49537.jpg --> MONIKER
     #NEW
     #print(filename)
-    #input('texten som')
     text = os.path.basename(filename).split('-',2)[1]
-    #print(text)
-    #input('after')
+
     #OLD
     #text = os.path.basename(filename).split('_',2)[1]
     # Transform string text to sequence of indices using charset, e.g.,
