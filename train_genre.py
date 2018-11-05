@@ -92,8 +92,6 @@ def _get_training(rnn_logits,label,sequence_length):
         else:
             scope="convnet|rnn"
 
-        #print(label)
-        #input('label')
         rnn_vars = tf.get_collection( tf.GraphKeys.TRAINABLE_VARIABLES,
                                        scope=scope)
 
@@ -197,7 +195,6 @@ def main(argv=None):
             init_fn=_get_init_pretrained(),
             save_model_secs=30)
 
-        input('main3')
         with sv.managed_session(config=session_config) as sess:
             step = sess.run(global_step)
 
@@ -212,19 +209,6 @@ def main(argv=None):
                 if step%100==0:
                     print(step_loss)
                     print('accuracy: ',accuracy_)
-                #input__,label__,filename__ = sess.run([image,label,filename])
-                #print(filename__)
-                #print(label__.values)
-                #test = np.array(input__)
-                #print(test.shape)
-                #print('size: ', test.size)
-                #plt.imshow(test[0,:,:])
-                #plt.show()
-
-                #print(input__)
-                #print(type(input__))
-                #print(len(input__[0,0]))
-                #input('step:')
 
             sv.saver.save( sess, os.path.join(FLAGS.output,'model.ckpt'),
                            global_step=global_step)
