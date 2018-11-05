@@ -42,7 +42,7 @@ tf.app.flags.DEFINE_string('train_path','../data/genres/',
                            """Base directory for training data""")
 tf.app.flags.DEFINE_string('filename_pattern','gen-*',
                            """File pattern for input data""")
-tf.app.flags.DEFINE_integer('num_input_threads',4, # FUNKAR FÖR NU
+tf.app.flags.DEFINE_integer('num_input_threads',4,
                           """Number of readers for input data""")
 tf.app.flags.DEFINE_integer('width_threshold',None,
                             """Limit of input image width""")
