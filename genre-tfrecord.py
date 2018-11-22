@@ -102,7 +102,7 @@ def gen_data(input_base_dir, image_list_filename, output_filebase,
     shard_format = '%0'+ ('%d'%num_digits) + 'd' # Use appropriate # leading zeros
     images_per_shard = int(math.ceil( len(image_filenames) / float(num_shards) ))
     
-    for i in range(start_shard,num_shards): # FIXA SÅ DET BARA ÄR num_shards-1 shards
+    for i in range(start_shard,num_shards): # make sure it just is num_shards-1 shards
         start = i*images_per_shard
         end   = (i+1)*images_per_shard
         out_filename = output_filebase+'-'+(shard_format % i)+'.tfrecord'
@@ -166,7 +166,7 @@ def log_scale_melspectrogram(sess,path, plot=False):
     '''
     
 
-    ## TESTAR UTAN DESSA, KAN BLI FEL!!!!
+    ## Not Sure
     #
 
     #print(len(signal))
