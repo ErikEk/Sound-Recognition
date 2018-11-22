@@ -152,9 +152,9 @@ def log_scale_melspectrogram(sess,path, plot=False):
         signal = np.hstack((signal, np.zeros((int(DURA*Fs) - n_sample,))))
     elif n_sample > n_sample_fit:
         #print((n_sample-n_sample_fit)/2)
-        signal = signal[int((n_sample-n_sample_fit)/2):int((n_sample+n_sample_fit)/2)] # HAR LAGT TILL int()
+        signal = signal[int((n_sample-n_sample_fit)/2):int((n_sample+n_sample_fit)/2)] # added int()
 
-    ## TESTAR UTAN DESSA, KAN BLI FEL!!!!
+    ## Not sure!!!!
     #, hop_length=N_OVERLAP, n_fft=N_FFT, n_mels=N_MELS 
 
     #print(len(signal))
